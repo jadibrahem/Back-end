@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import Employee , Department, Position , PositionLevel , Address , Dependent
-from .serializers import EmployeeSerializer , DepartmentSerializer  , PositionLevelSerializer , PositionSerializer ,AddressSerializer , DependentsSerializer , EmployeeNameWithDependentCountSerializer
+from .models import Employee , Department, Position , PositionLevel , Address , Dependent , Signature , EmployeeDocument
+from .serializers import EmployeeSerializer , DepartmentSerializer  , PositionLevelSerializer , PositionSerializer ,AddressSerializer , DependentsSerializer , EmployeeNameWithDependentCountSerializer , EmployeeDocumentSerializer , SignatureSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import filters
 from django.db.models import Q
 from django.db.models import Count
-
+from rest_framework import viewsets
 # List and Create View
 class EmployeeListCreateView(generics.ListCreateAPIView):
     serializer_class = EmployeeSerializer
@@ -149,3 +149,21 @@ class EmployeeWithDependentsCountView(APIView):
         serializer = EmployeeNameWithDependentCountSerializer(employees_with_counts, many=True)
 
         return Response(serializer.data)
+    
+
+
+class SignatureListCreateView(generics.ListCreateAPIView):
+    queryset = Signature.objects.all()
+    serializer_class = SignatureSerializer
+
+class SignatureDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Signature.objects.all()
+    serializer_class = SignatureSerializer
+
+class EmployeeDocumentListCreateView(generics.ListCreateAPIView):
+    queryset = EmployeeDocument.objects.all()
+    serializer_class = EmployeeDocumentSerializer
+
+class EmployeeDocumentDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = EmployeeDocument.objects.all()
+    serializer_class = EmployeeDocumentSerializer

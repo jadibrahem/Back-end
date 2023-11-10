@@ -1,11 +1,12 @@
 from django.shortcuts import get_object_or_404, render
 from rest_framework import viewsets
 from .models import Leave, LeaveAllocation , Employee, LeaveStatus
-from .serializers import LeaveSerializer, LeaveAllocationSerializer , EmployeeLeaveAllocationSerializer
+from .serializers import LeaveSerializer, LeaveAllocationSerializer , EmployeeLeaveAllocationSerializer , LeaveRequestSerializer , SignatureSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-
+from base.models import Signature
+from rest_framework.parsers import MultiPartParser, FormParser
 class LeaveViewSet(viewsets.ModelViewSet):
     queryset = Leave.objects.all()
     serializer_class = LeaveSerializer
@@ -80,3 +81,48 @@ class EmployeeLeaveViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeLeaveAllocationSerializer
     
+
+
+
+class LeaveRequestAPIView(APIView):
+    parser_classes = (MultiPartParser, FormParser)  # Add these parsers to handle file upload
+    def post(self, request, *args, **kwargs):
+        # Retrieve the insurance number from the request data
+        insurance_number = request.data.get('InsuranceNumber')
+        # Find the employee with the given insurance number
+        employee = get_object_or_404(Employee, InsuranceNumber=insurance_number)
+        print("i get the man")
+        # Handle file upload
+        signature_file = request.FILES.get('signature_file')
+        if signature_file:
+            # Save the signature
+            signature, created = Signature.objects.get_or_create(employee=employee)
+            signature.signature_file.save(name='signature.png', content=signature_file, save=True)
+            print("thanks for sinature")
+        else:
+            print("im stack here")
+            return Response({"error": "Signature file is missing."}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Create a new leave request
+        leave_data = {
+            'Employee': employee.pk,
+            'LeaveType': request.data.get('LeaveType'),
+            'StartDate': request.data.get('StartDate'),
+            'EndDate': request.data.get('EndDate'),
+            'Reason': request.data.get('Reason'),
+            # Assume Status is set to PENDING by default in the model
+        }
+        print("stack here ")
+        serializer = LeaveSerializer(data=leave_data)
+        print(serializer)
+        if serializer.is_valid():
+            print("and here two ")
+            serializer.save()
+            print("im stack here123123")
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            # If not valid, print the errors to the console and return them in the response
+            print(serializer.errors)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# Don't forget to include the necessary imports at the top of your file

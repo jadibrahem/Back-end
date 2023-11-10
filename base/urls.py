@@ -34,4 +34,12 @@ urlpatterns = [
     
     #to show emoloyee name with their dependent    
     path('employee-dependent-count/', views.EmployeeWithDependentsCountView.as_view(), name='employee-with-dependent-count'),
+
+    # URLs for Signature model operations
+    path('signatures/', views.SignatureListCreateView.as_view(), name='signature-list-create'),
+    path('signatures/<int:pk>/', views.SignatureDetailView.as_view(), name='signature-detail'),
+    
+    # URLs for EmployeeDocument model operations
+    path('employee-documents/', views.EmployeeDocumentListCreateView.as_view(), name='employee-document-list-create'),
+    path('employee-documents/<int:pk>/', views.EmployeeDocumentDetailView.as_view(), name='employee-document-detail'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

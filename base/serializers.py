@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Department, PositionLevel, Position, Employee, Address, Dependent
+from .models import Department, PositionLevel, Position, Employee, Address, Dependent ,Signature , EmployeeDocument
 
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -38,3 +38,15 @@ class EmployeeNameWithDependentCountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
         fields = ['FirstName', 'LastName', 'dependents_count']        
+
+
+
+class SignatureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Signature
+        fields = '__all__'
+
+class EmployeeDocumentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EmployeeDocument
+        fields = '__all__'

@@ -60,19 +60,19 @@ class Employee(models.Model):
         verbose_name = "Employee"
         verbose_name_plural = "Employees"
 
-# class Signature(models.Model):
-#     employee = models.OneToOneField(Employee, on_delete=models.CASCADE)
-#     signature_file = models.ImageField(upload_to='signatures/')
+class Signature(models.Model):
+    employee = models.OneToOneField(Employee, on_delete=models.CASCADE)
+    signature_file = models.ImageField(upload_to='signatures/')
 
 
-# class EmployeeDocument(models.Model):
-#     employee = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='documents')
-#     file = models.FileField(upload_to='employee_documents/')
-#     description = models.CharField(max_length=255, blank=True)
-#     uploaded_at = models.DateTimeField(auto_now_add=True)
+class EmployeeDocument(models.Model):
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='documents')
+    file = models.FileField(upload_to='employee_documents/')
+    description = models.CharField(max_length=255, blank=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
 
-#     def __str__(self):
-#         return f"Document for {self.employee.FirstName} uploaded on {self.uploaded_at}"
+    def __str__(self):
+        return f"Document for {self.employee.FirstName} uploaded on {self.uploaded_at}"
 
 class Address(models.Model):
     Employee = models.OneToOneField(Employee, on_delete=models.CASCADE, primary_key=True)  # One-to-One relationship

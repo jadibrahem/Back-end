@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from .models import Leave, LeaveAllocation , Employee
-
+from .models import Leave, LeaveAllocation , Employee 
+from base.models import Signature
 class LeaveSerializer(serializers.ModelSerializer):
     class Meta:
         model = Leave
@@ -48,3 +48,12 @@ class EmployeeLeaveAllocationSerializer(serializers.ModelSerializer):
             }
         except LeaveAllocation.DoesNotExist:
             return None  # Or a default representation of no allocation
+class LeaveRequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Leave
+        fields = '__all__'  # List all the fields that you want to include
+
+class SignatureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Signature
+        fields = ['signature_image']        
