@@ -8,6 +8,7 @@ from rest_framework import filters
 from django.db.models import Q
 from django.db.models import Count
 from rest_framework import viewsets
+from django.http import JsonResponse
 # List and Create View
 class EmployeeListCreateView(generics.ListCreateAPIView):
     serializer_class = EmployeeSerializer
@@ -112,30 +113,30 @@ class DependentsRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView)
 
 # function to show org structure 
 
-class OrgStructureView(APIView):
-    def get(self, request):
-        departments = Department.objects.all()
+# class OrgStructureView(APIView):
+#     def get(self, request):
+#         departments = Department.objects.all()
 
-        org_structure = []
+#         org_structure = []
 
-        for department in departments:
-            # Serialize the department
-            department_data = DepartmentSerializer(department).data
+#         for department in departments:
+#             # Serialize the department
+#             department_data = DepartmentSerializer(department).data
 
-            # Fetch and serialize positions related to this department
-            positions = Position.objects.filter(Department=department)
-            positions_data = PositionSerializer(positions, many=True).data
+#             # Fetch and serialize positions related to this department
+#             positions = Position.objects.filter(Department=department)
+#             positions_data = PositionSerializer(positions, many=True).data
 
-            for position in positions_data:
-                # Fetch and serialize employees related to this position
-                employees = Employee.objects.filter(position__Name=position['Name'])
-                position['employees'] = EmployeeSerializer(employees, many=True).data
+#             for position in positions_data:
+#                 # Fetch and serialize employees related to this position
+#                 employees = Employee.objects.filter(position__Name=position['Name'])
+#                 position['employees'] = EmployeeSerializer(employees, many=True).data
 
-            department_data['positions'] = positions_data
+#             department_data['positions'] = positions_data
 
-            org_structure.append(department_data)
+#             org_structure.append(department_data)
 
-        return Response(org_structure)
+#         return Response(org_structure)
 
 #function to show employee names with their dependents number
 
@@ -167,3 +168,34 @@ class EmployeeDocumentListCreateView(generics.ListCreateAPIView):
 class EmployeeDocumentDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = EmployeeDocument.objects.all()
     serializer_class = EmployeeDocumentSerializer
+
+
+
+def get_org_structure(request):
+    org_structure = []
+    for department in Department.objects.all():
+        department_data = {
+            'Department': department.Name,
+            'Positions': []
+        }
+
+        positions = Position.objects.filter(Department=department)
+        for position in positions:
+            position_data = {
+                'Position': position.Name,
+                'Level': position.Level.LevelName,
+                'Employees': []
+            }
+
+            employees = Employee.objects.filter(position=position)
+            for employee in employees:
+                employee_data = {
+                    'Name': f"{employee.FirstName} {employee.LastName}",
+                    'DateHired' : employee.DateHired
+                }
+                position_data['Employees'].append(employee_data)
+
+            department_data['Positions'].append(position_data)
+        org_structure.append(department_data)
+
+    return JsonResponse(org_structure, safe=False)    

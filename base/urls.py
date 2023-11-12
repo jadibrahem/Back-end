@@ -6,7 +6,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     # Department URLs
-    path('department/', views.DepartmentListCreateView.as_view(), name='department-list-create'),
+    path('org-structure/', views.get_org_structure),
+
+    path(' /', views.DepartmentListCreateView.as_view(), name='department-list-create'),
     path('department/<int:pk>/', views.DepartmentRetrieveUpdateDestroyView.as_view(), name='department-detail'),
 
     # PositionLevel URLs
@@ -30,7 +32,7 @@ urlpatterns = [
     path('dependents/<int:pk>/', views.DependentsRetrieveUpdateDestroyView.as_view(), name='dependents-detail'),
 
     #orgstructure
-    path('org-structure/', views.OrgStructureView.as_view(), name='org-structure'),
+    #path('org-structure/', views.OrgStructureView.as_view(), name='org-structure'),
     
     #to show emoloyee name with their dependent    
     path('employee-dependent-count/', views.EmployeeWithDependentsCountView.as_view(), name='employee-with-dependent-count'),
