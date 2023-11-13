@@ -12,7 +12,9 @@ from rest_framework.views import APIView
 from rest_framework import status
 from base.models import Signature
 from rest_framework.parsers import MultiPartParser, FormParser
+from twilio.rest import Client
 
+from django.conf import settings
 class LeaveViewSet(viewsets.ModelViewSet):
     queryset = Leave.objects.all()
     serializer_class = LeaveSerializer
@@ -28,26 +30,61 @@ class CreateLeaveRequest(APIView):
 
 
 
+
+
+
 class LeaveDetailView(generics.RetrieveUpdateAPIView):
     queryset = Leave.objects.all()
     serializer_class = LeaveSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    def update(self, request, *args, **kwargs):
+    def put(self, request, *args, **kwargs):
         leave = self.get_object()
 
-        # Restrict updates to only the 'Status' field and only for admin users
+        # Only allow admin users to update the leave status
         if request.user.is_staff:
-            new_status = request.data.get('Status', None)
-            if new_status and new_status in LeaveStatus.choices:
-                leave.Status = new_status
+            status_field = request.data.get('Status', None)
+            if status_field:
+                leave.Status = status_field
                 leave.save()
-                return Response({'status': new_status}, status=status.HTTP_200_OK)
+
+                # Check if the status is 'Approved' and send a WhatsApp message
+                if status_field == LeaveStatus.APPROVED:
+                    self.send_whatsapp_message(leave)
+                 
+
+                return Response({"success": "Leave status updated."}, status=status.HTTP_200_OK)
             else:
-                return Response({"error": "Invalid or missing 'Status' field."}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({"error": "Status field is required."}, status=status.HTTP_400_BAD_REQUEST)
         else:
             return Response({"error": "You do not have permission to change the leave status."},
                             status=status.HTTP_403_FORBIDDEN)
+
+    def send_whatsapp_message(self, leave):
+        try:
+            # Calculate the duration of the leave
+            leave_duration = (leave.EndDate - leave.StartDate).days + 1  # +1 to include both start and end dates
+
+            # Twilio credentials from settings or environment variables
+            account_sid = settings.TWILIO_ACCOUNT_SID
+            auth_token = settings.TWILIO_AUTH_TOKEN
+            from_whatsapp_number = settings.TWILIO_WHATSAPP_NUMBER
+
+            client = Client(account_sid, auth_token)
+
+            # Employee's phone number (ensure it's in the format 'whatsapp:+1234567890')
+            to_whatsapp_number = f'whatsapp:{leave.Employee.Phone}'
+
+            # Customize the message body
+            message_body = f'Hello {leave.Employee.FirstName}, your leave request for {leave_duration} day(s) has been approved.'
+
+            # Send the message
+            client.messages.create(body=message_body, from_=from_whatsapp_number, to=to_whatsapp_number)
+        except Exception as e:
+            # Log the exception or print it
+            print(f"Error sending WhatsApp message: {e}")
+
+
 class ApproveLeaveRequest(APIView):
     def post(self, request, pk, *args, **kwargs):
         leave = get_object_or_404(Leave, pk=pk)
