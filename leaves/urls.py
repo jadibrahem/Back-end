@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ApproveLeaveRequest, CreateLeaveRequest, LeaveViewSet, LeaveAllocationViewSet , EmployeeLeaveViewSet, ListLeaveRequestsByStatus, RejectLeaveRequest, LeaveRequestAPIView, employee_leave_info ,LeaveDetailView
+from .views import LeaveViewSet, LeaveAllocationViewSet , EmployeeLeaveViewSet, ListLeaveRequestsByStatus, LeaveRequestAPIView, employee_leave_info ,LeaveDetailView
 
 
 urlpatterns = [
@@ -7,10 +7,8 @@ urlpatterns = [
     path('leave/', LeaveViewSet.as_view({'get': 'list', 'post': 'create'}), name='leave-list'),
     path('leave/<int:pk>/', LeaveDetailView.as_view(), name='leave-detail'),
     
-    path('leave/create/', CreateLeaveRequest.as_view(), name='create_leave_request'),
 
-    path('leave/approve/<int:pk>/', ApproveLeaveRequest.as_view(), name='approve_leave_request'),
-    path('leave/reject/<int:pk>/', RejectLeaveRequest.as_view(), name='reject_leave_request'),
+
     path('leave/list-by-status/', ListLeaveRequestsByStatus.as_view(), name='list_leave_requests_by_status'),
 
     # URLs for LeaveAllocation

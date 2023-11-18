@@ -144,5 +144,5 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 TWILIO_ACCOUNT_SID = 'AC83a154d42c3e09e566ecebf2e1884346'
-TWILIO_AUTH_TOKEN = '0b0f9d1c948de090fa50cf1ee6d735fc'
+TWILIO_AUTH_TOKEN = ''
 TWILIO_WHATSAPP_NUMBER = 'whatsapp:+14155238886'  # This should start with 'whatsapp:'

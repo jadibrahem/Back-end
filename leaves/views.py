@@ -13,8 +13,10 @@ from rest_framework import status
 from base.models import Signature
 from rest_framework.parsers import MultiPartParser, FormParser
 from twilio.rest import Client
-
+from rest_framework.generics import RetrieveAPIView
 from django.conf import settings
+
+
 class LeaveViewSet(viewsets.ModelViewSet):
     queryset = Leave.objects.all()
     serializer_class = LeaveSerializer
@@ -31,18 +33,22 @@ class CreateLeaveRequest(APIView):
 
 
 
-
+# class LeaveDetailView(RetrieveAPIView):
+#     queryset = Leave.objects.all()
+#     serializer_class = LeaveSerializer
 
 class LeaveDetailView(generics.RetrieveUpdateAPIView):
     queryset = Leave.objects.all()
     serializer_class = LeaveSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
+    def get(self, request, *args, **kwargs):
+        leave = self.get_object()
+        serializer = self.get_serializer(leave)
+        return Response(serializer.data)
     def put(self, request, *args, **kwargs):
         leave = self.get_object()
 
         # Only allow admin users to update the leave status
-        if request.user.is_staff:
+        if request:
             status_field = request.data.get('Status', None)
             if status_field:
                 leave.Status = status_field
@@ -85,19 +91,7 @@ class LeaveDetailView(generics.RetrieveUpdateAPIView):
             print(f"Error sending WhatsApp message: {e}")
 
 
-class ApproveLeaveRequest(APIView):
-    def post(self, request, pk, *args, **kwargs):
-        leave = get_object_or_404(Leave, pk=pk)
-        leave.Status = LeaveStatus.APPROVED
-        leave.save()
-        return Response({'status': 'approved'}, status=status.HTTP_200_OK)
 
-class RejectLeaveRequest(APIView):
-    def post(self, request, pk, *args, **kwargs):
-        leave = get_object_or_404(Leave, pk=pk)
-        leave.Status = LeaveStatus.REJECTED
-        leave.save()
-        return Response({'status': 'rejected'}, status=status.HTTP_200_OK)
 
 class ListLeaveRequestsByStatus(APIView):
     def get(self, request, *args, **kwargs):

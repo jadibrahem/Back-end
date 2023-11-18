@@ -2,10 +2,12 @@ from rest_framework import serializers
 from .models import Leave, LeaveAllocation , Employee 
 from base.models import Signature
 class LeaveSerializer(serializers.ModelSerializer):
+    employee_name = serializers.CharField(source='Employee.FirstName', read_only=True)  # Ensure this matches your model field
+    position_name = serializers.CharField(source='Employee.position.Name', read_only=True)  # Ensure this matches your model field
+
     class Meta:
         model = Leave
-        fields = '__all__'
-
+        fields = ['id', 'LeaveType', 'StartDate', 'EndDate', 'Reason', 'Status', 'Employee', 'employee_name', 'position_name']
 class LeaveAllocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = LeaveAllocation
