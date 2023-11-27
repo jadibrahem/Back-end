@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import LeaveViewSet, LeaveAllocationViewSet , EmployeeLeaveViewSet, ListLeaveRequestsByStatus, LeaveRequestAPIView, employee_leave_info ,LeaveDetailView
-
+from .views import LeaveViewSet, LeaveAllocationViewSet , EmployeeLeaveViewSet, ListLeaveRequestsByStatus, LeaveRequestAPIView, employee_leave_info ,LeaveDetailView , employee_leave
+from .views import LeavePDFDetail
 
 urlpatterns = [
     # URLs for Leave
@@ -18,6 +18,10 @@ urlpatterns = [
     path('employee-leaves/', EmployeeLeaveViewSet.as_view({'get': 'list'}), name='employee-leaves-list'),
     path('employee-leave-info/', employee_leave_info),
     path('leave-request/', LeaveRequestAPIView.as_view(), name='leave-request'),
+
+    path('employee/<str:insurance_number>/leaves/', employee_leave, name='employee-leave'),
+
+    path('leavepdf/<int:pk>/',LeavePDFDetail.as_view(), name='leave-detail'),
     # ... your other url patterns
  
 

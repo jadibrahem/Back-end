@@ -8,7 +8,7 @@ urlpatterns = [
     # Department URLs
     path('org-structure/', views.get_org_structure),
 
-    path(' /', views.DepartmentListCreateView.as_view(), name='department-list-create'),
+    path('department/', views.DepartmentListCreateView.as_view(), name='department-list-create'),
     path('department/<int:pk>/', views.DepartmentRetrieveUpdateDestroyView.as_view(), name='department-detail'),
 
     # PositionLevel URLs
@@ -21,8 +21,8 @@ urlpatterns = [
 
     # Employee URLs
     path('employee/', views.EmployeeListCreateView.as_view(), name='employee-list-create'),
-    path('employee/<int:pk>/', views.EmployeeRetrieveUpdateDestroyView.as_view(), name='employee-detail'),
-
+   
+    path('employee/<str:insurance_number>/', views.employee_detail, name='employee-details-by-insurance'),
     # Address URLs
     path('address/', views.AddressListCreateView.as_view(), name='address-list-create'),
     path('address/<int:pk>/', views.AddressRetrieveUpdateDestroyView.as_view(), name='address-detail'),

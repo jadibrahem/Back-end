@@ -7,8 +7,10 @@ from rest_framework.response import Response
 from rest_framework import filters
 from django.db.models import Q
 from django.db.models import Count
-from rest_framework import viewsets
-from django.http import JsonResponse
+from rest_framework import status
+from django.http import Http404, JsonResponse
+from rest_framework.decorators import api_view
+
 # List and Create View
 class EmployeeListCreateView(generics.ListCreateAPIView):
     serializer_class = EmployeeSerializer
@@ -59,10 +61,17 @@ class EmployeeListCreateView(generics.ListCreateAPIView):
 
 
 # Retrieve, Update, and Delete View
-class EmployeeRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Employee.objects.all()
-    serializer_class = EmployeeSerializer
 
+
+
+@api_view(['GET'])
+def employee_detail(request, insurance_number):
+    try:
+        employee = Employee.objects.get(InsuranceNumber=insurance_number)
+        serializer = EmployeeSerializer(employee)
+        return Response(serializer.data)
+    except Employee.DoesNotExist:
+        return Response({'error': 'Employee not found'}, status=404)
 
 class DepartmentListCreateView(generics.ListCreateAPIView):
     queryset = Department.objects.all()

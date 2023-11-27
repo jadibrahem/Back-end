@@ -6,7 +6,7 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from rest_framework import viewsets
 from .models import Leave, LeaveAllocation , Employee, LeaveStatus, LeaveType
-from .serializers import LeaveSerializer, LeaveAllocationSerializer , EmployeeLeaveAllocationSerializer , LeaveRequestSerializer , SignatureSerializer
+from .serializers import LeavePdfSerializer, LeaveSerializer, LeaveAllocationSerializer , EmployeeLeaveAllocationSerializer , LeaveRequestSerializer , SignatureSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
@@ -15,7 +15,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from twilio.rest import Client
 from rest_framework.generics import RetrieveAPIView
 from django.conf import settings
-
+from rest_framework.decorators import api_view
 
 class LeaveViewSet(viewsets.ModelViewSet):
     queryset = Leave.objects.all()
@@ -205,3 +205,49 @@ def employee_leave_info(request):
         employees_info.append(employee_data)
 
     return JsonResponse(employees_info, safe=False)
+
+
+
+@api_view(['GET'])
+def employee_leave(request, insurance_number):
+    try:
+        employee = Employee.objects.get(InsuranceNumber=insurance_number)
+        leave_allocation = LeaveAllocation.objects.get(Employee=employee)
+
+        # Update the leave allocation before processing
+        leave_allocation.update_leaves()
+
+        leaves = Leave.objects.filter(Employee=employee)
+        leave_serializer = LeaveSerializer(leaves, many=True)
+
+        # Initialize leave details with all leave types set to 0
+        leave_details = {label: 0 for _, label in LeaveType.choices}
+
+        # Sum the duration of leaves by type
+        for leave in leaves.filter(Status=LeaveStatus.APPROVED):
+            leave_type_label = dict(LeaveType.choices)[leave.LeaveType]
+            leave_duration = (leave.EndDate - leave.StartDate).days + 1
+            leave_details[leave_type_label] += leave_duration
+
+        # Prepare the response data
+        employee_data = {
+            'EmployeeID': employee.EmployeeID,
+            'Name': f"{employee.FirstName} {employee.LastName}",
+            'LeaveDetails': leave_details,
+            'TakenLeaves': leave_allocation.used_leaves,
+            'RemainingLeaves': leave_allocation.remaining_leaves,
+            'leave_requests': leave_serializer.data
+        }
+
+        return Response(employee_data)
+
+    except Employee.DoesNotExist:
+        return Response({'error': 'Employee not found'}, status=404)
+    except LeaveAllocation.DoesNotExist:
+        return Response({'error': 'Leave allocation not found'}, status=404)
+    
+
+
+class LeavePDFDetail(generics.RetrieveAPIView):
+    queryset = Leave.objects.all()
+    serializer_class = LeavePdfSerializer

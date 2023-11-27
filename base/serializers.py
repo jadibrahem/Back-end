@@ -16,10 +16,10 @@ class PositionSerializer(serializers.ModelSerializer):
         model = Position
         fields = '__all__'
 
-class EmployeeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Employee
-        fields = '__all__'
+# class EmployeeSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Employee
+#         fields = '__all__'
 
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:
@@ -50,3 +50,26 @@ class EmployeeDocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model = EmployeeDocument
         fields = '__all__'
+
+class DependentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Dependent
+        fields = ['DependentID', 'DependentName', 'Relationship', 'DateOfBirth']
+
+
+
+class EmployeeSerializer(serializers.ModelSerializer):
+    Address = AddressSerializer(read_only=True)
+    documents = EmployeeDocumentSerializer(many=True, read_only=True)
+    signature = SignatureSerializer(read_only=True)
+    position_detail = PositionSerializer(source='position', read_only=True)
+    dependents = DependentSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Employee
+        fields = [
+            'EmployeeID', 'FirstName', 'LastName', 'MiddleName', 'position_detail', 'DateHired', 
+            'DateOfBirth', 'Nationality', 'Gender', 'MaritalStatus', 'Email', 'Phone', 
+            'InsuranceNumber', 'PassportNumber', 'ProfileImage', 'Address', 'dependents', 
+            'signature', 'documents'
+        ]        
