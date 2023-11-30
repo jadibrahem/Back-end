@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     # Department URLs
+
+    path('login/', views.LoginView.as_view(), name='login'),
     path('org-structure/', views.get_org_structure),
 
     path('department/', views.DepartmentListCreateView.as_view(), name='department-list-create'),

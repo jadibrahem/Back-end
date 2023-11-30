@@ -10,6 +10,7 @@ from django.db.models import Count
 from rest_framework import status
 from django.http import Http404, JsonResponse
 from rest_framework.decorators import api_view
+from django.contrib.auth import authenticate
 
 # List and Create View
 class EmployeeListCreateView(generics.ListCreateAPIView):
@@ -208,3 +209,12 @@ def get_org_structure(request):
         org_structure.append(department_data)
 
     return JsonResponse(org_structure, safe=False)    
+
+class LoginView(APIView):
+    def post(self, request, *args, **kwargs):
+        username = request.data.get('username')
+        password = request.data.get('password')
+        user = authenticate(username=username, password=password)
+        if user:
+            return Response({'message': 'Login successful'})
+        return Response({'error': 'Invalid Credentials'}, status=status.HTTP_400_BAD_REQUEST)
