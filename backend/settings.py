@@ -91,14 +91,24 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'HRdatabase', 
+#         'USER': 'postgres',
+#         'PASSWORD': 'halo',
+#         'HOST': '127.0.0.1', 
+#         'PORT': '5432',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'HRdatabase', 
-        'USER': 'postgres',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'HaloTrust',
+        'USER': 'halo',
         'PASSWORD': 'halo',
-        'HOST': '127.0.0.1', 
-        'PORT': '5432',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
