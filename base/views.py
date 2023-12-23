@@ -1,4 +1,7 @@
+from io import BytesIO
+import json
 from django.shortcuts import render
+import qrcode
 from rest_framework import generics
 from .models import Employee , Department, Position , PositionLevel , Address , Dependent , Signature , EmployeeDocument
 from .serializers import EmployeeSerializer , DepartmentSerializer  , PositionLevelSerializer , PositionSerializer ,AddressSerializer , DependentsSerializer , EmployeeNameWithDependentCountSerializer , EmployeeDocumentSerializer , SignatureSerializer
@@ -11,6 +14,9 @@ from rest_framework import status
 from django.http import Http404, JsonResponse
 from rest_framework.decorators import api_view
 from django.contrib.auth import authenticate
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
+from django.views import View
 
 # List and Create View
 class EmployeeListCreateView(generics.ListCreateAPIView):
@@ -218,3 +224,42 @@ class LoginView(APIView):
         if user:
             return Response({'message': 'Login successful'})
         return Response({'error': 'Invalid Credentials'}, status=status.HTTP_400_BAD_REQUEST)
+    
+
+
+
+
+# def display_qr_code(request, InsuranceNumber):
+#     employee = get_object_or_404(Employee, InsuranceNumber=InsuranceNumber)
+#     qr_code_image = employee.generate_qr_code()
+#     return qr_code_image
+    
+
+class QRCodeAPIView(View):
+    def get(self, request, InsuranceNumber, *args, **kwargs):
+        employee = get_object_or_404(Employee, InsuranceNumber=InsuranceNumber)
+        qr_code_image = self.generate_qr_code(employee)
+
+        # Return the QR code image as binary data
+        response = HttpResponse(qr_code_image, content_type='image/png')
+        response['Content-Disposition'] = f'inline; filename="{employee.InsuranceNumber}_qr.png"'
+        return response
+
+    def generate_qr_code(self, employee):
+        # Create a QR code instance
+        qr = qrcode.QRCode(
+            version=1,
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            box_size=10,
+            border=4,
+        )
+        qr.add_data(f"InsuranceNumber: {employee.InsuranceNumber}\n")
+        qr.make(fit=True)
+
+        # Create an image from the QR code
+        img = qr.make_image(fill_color="black", back_color="white")
+        buffer = BytesIO()
+        img.save(buffer, format="PNG")
+
+        # Return the QR code content as bytes
+        return buffer.getvalue()

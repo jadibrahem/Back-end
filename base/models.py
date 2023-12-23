@@ -1,4 +1,8 @@
 from django.db import models
+from django.http import HttpResponse
+import qrcode
+from io import BytesIO
+from django.core.files import File
 
 class Department(models.Model):
     Name = models.CharField(max_length=255)
@@ -55,7 +59,23 @@ class Employee(models.Model):
 
     def __str__(self):
         return f"{self.FirstName} {self.LastName}"
+    def generate_qr_code(self):
+            # Create a QR code instance
+            qr = qrcode.QRCode(
+                version=1,
+                error_correction=qrcode.constants.ERROR_CORRECT_L,
+                box_size=10,
+                border=4,
+            )
+            qr.add_data(f"InsuranceNumber: {self.InsuranceNumber}\n")
+            qr.make(fit=True)
 
+            # Create an image from the QR code
+            img = qr.make_image(fill_color="black", back_color="white")
+            buffer = BytesIO()
+            img.save(buffer, format="PNG")
+
+            return HttpResponse(buffer.getvalue(), content_type="image/png")
     class Meta:
         verbose_name = "Employee"
         verbose_name_plural = "Employees"

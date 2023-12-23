@@ -46,4 +46,7 @@ urlpatterns = [
     # URLs for EmployeeDocument model operations
     path('employee-documents/', views.EmployeeDocumentListCreateView.as_view(), name='employee-document-list-create'),
     path('employee-documents/<int:pk>/', views.EmployeeDocumentDetailView.as_view(), name='employee-document-detail'),
+
+    path('qr-code/<str:InsuranceNumber>/', views.QRCodeAPIView.as_view(), name='qr_code_api'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
