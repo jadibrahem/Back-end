@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure--1yw=aciqe(wldc)2z94-3%xt6n=k@j(v(&hfz&l!-s#@mftln
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['halotrust.pythonanywhere.com']
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Add the origins of your frontend
@@ -114,7 +114,12 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': '/home/halotrust/Back-end/db.sqlite3',  # Adjust the path as needed
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
