@@ -8,4 +8,5 @@ urlpatterns = [
     path('', include('base.urls')),  # Include your  urls here
     path('', include('leaves.urls')),
     path('', include('attendance.urls')),
+    path('', include('teams.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
