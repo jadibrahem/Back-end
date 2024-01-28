@@ -26,6 +26,8 @@ class TeamDetailListView(ListAPIView):
     """
     queryset = Team.objects.prefetch_related('members__team_role', 'members__employee', 'members__position').all()
     serializer_class = TeamSerializer
+
+    
 class PresentEmployeesNotOnLeaveView(APIView):
     """
     API endpoint that returns a list of employees who are present and not on leave on a given date.

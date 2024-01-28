@@ -1,0 +1,115 @@
+2024-01-27 08:51:46,565 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request.
+2024-01-27 08:51:46,568 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 08:51:46,569 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 54
+2024-01-27 08:52:06,930 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request.
+2024-01-27 08:52:06,931 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 08:52:06,933 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 54
+2024-01-27 08:52:27,967 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request.
+2024-01-27 08:52:27,970 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 08:52:27,971 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 54
+2024-01-27 08:53:02,705 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request.
+2024-01-27 08:53:02,706 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 08:53:02,706 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 54
+2024-01-27 08:53:32,733 INFO views Purchase request 1 approved by halo
+2024-01-27 08:57:33,534 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request.
+2024-01-27 08:57:33,535 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 08:57:33,535 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 54
+2024-01-27 08:57:37,916 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request.
+2024-01-27 08:57:37,917 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 08:57:37,918 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 54
+2024-01-27 08:58:04,110 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request.
+2024-01-27 08:58:04,111 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 08:58:04,111 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 54
+2024-01-27 08:58:10,770 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request.
+2024-01-27 08:58:10,771 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 08:58:10,771 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 54
+2024-01-27 08:58:31,753 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request.
+2024-01-27 08:58:31,753 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 08:58:31,754 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 54
+2024-01-27 08:58:50,859 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request.
+2024-01-27 08:58:50,859 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 08:58:50,860 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 54
+2024-01-27 08:58:55,747 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request.
+2024-01-27 08:58:55,748 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 08:58:55,749 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 54
+2024-01-27 08:59:17,512 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request.
+2024-01-27 08:59:17,513 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 08:59:17,513 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 54
+2024-01-27 08:59:18,940 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request.
+2024-01-27 08:59:18,941 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 08:59:18,942 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 54
+2024-01-27 08:59:59,880 INFO views Purchase request 1 approved by halo
+2024-01-27 09:00:43,542 WARNING log Not Found: /purchase-requests/5/
+2024-01-27 09:00:43,542 WARNING basehttp "GET /purchase-requests/5/ HTTP/1.1" 404 39
+2024-01-27 09:00:43,550 WARNING log Not Found: /purchase-requests/5/
+2024-01-27 09:00:43,550 WARNING basehttp "GET /purchase-requests/5/ HTTP/1.1" 404 39
+2024-01-27 09:00:53,823 WARNING views Failed to approve purchase request 6: User does not have permission to approve this request.
+2024-01-27 09:00:53,824 WARNING log Bad Request: /purchase-requests/6/approve/
+2024-01-27 09:00:53,826 WARNING basehttp "POST /purchase-requests/6/approve/ HTTP/1.1" 400 54
+2024-01-27 09:01:22,263 WARNING views Failed to approve purchase request 6: User does not have permission to approve this request.
+2024-01-27 09:01:22,264 WARNING log Bad Request: /purchase-requests/6/approve/
+2024-01-27 09:01:22,264 WARNING basehttp "POST /purchase-requests/6/approve/ HTTP/1.1" 400 54
+2024-01-27 09:05:02,750 WARNING views Failed to approve purchase request 6: User does not have permission to approve this request.
+2024-01-27 09:05:02,752 WARNING log Bad Request: /purchase-requests/6/approve/
+2024-01-27 09:05:02,754 WARNING basehttp "POST /purchase-requests/6/approve/ HTTP/1.1" 400 54
+2024-01-27 09:05:21,603 WARNING views Failed to approve purchase request 6: User does not have permission to approve this request.
+2024-01-27 09:05:21,605 WARNING log Bad Request: /purchase-requests/6/approve/
+2024-01-27 09:05:21,607 WARNING basehttp "POST /purchase-requests/6/approve/ HTTP/1.1" 400 54
+2024-01-27 09:06:29,367 WARNING log Not Found: /purchase-requests/8/
+2024-01-27 09:06:29,368 WARNING basehttp "GET /purchase-requests/8/ HTTP/1.1" 404 39
+2024-01-27 09:06:29,377 WARNING log Not Found: /purchase-requests/8/
+2024-01-27 09:06:29,378 WARNING basehttp "GET /purchase-requests/8/ HTTP/1.1" 404 39
+2024-01-27 09:07:00,746 INFO views Purchase request 7 approved by jad
+2024-01-27 09:07:55,825 INFO views Purchase request 7 approved by jad
+2024-01-27 09:55:45,109 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request or the request is in an invalid state for approval.
+2024-01-27 09:55:45,110 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 09:55:45,111 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 105
+2024-01-27 09:56:01,570 INFO views Purchase request 1 approved by jad
+2024-01-27 09:56:06,504 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request or the request is in an invalid state for approval.
+2024-01-27 09:56:06,506 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 09:56:06,508 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 105
+2024-01-27 09:56:30,043 INFO views Purchase request 1 approved by jad
+2024-01-27 09:58:25,183 WARNING log Bad Request: /finance/login/
+2024-01-27 09:58:25,184 WARNING basehttp "POST /finance/login/ HTTP/1.1" 400 31
+2024-01-27 09:58:26,419 WARNING log Bad Request: /finance/login/
+2024-01-27 09:58:26,421 WARNING basehttp "POST /finance/login/ HTTP/1.1" 400 31
+2024-01-27 09:58:31,463 WARNING log Bad Request: /finance/login/
+2024-01-27 09:58:31,464 WARNING basehttp "POST /finance/login/ HTTP/1.1" 400 31
+2024-01-27 09:58:42,070 WARNING log Bad Request: /finance/login/
+2024-01-27 09:58:42,071 WARNING basehttp "POST /finance/login/ HTTP/1.1" 400 31
+2024-01-27 09:58:43,446 WARNING log Bad Request: /finance/login/
+2024-01-27 09:58:43,447 WARNING basehttp "POST /finance/login/ HTTP/1.1" 400 31
+2024-01-27 10:13:51,498 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request or the request is in an invalid state for approval.
+2024-01-27 10:13:51,499 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 10:13:51,500 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 105
+2024-01-27 10:13:57,289 WARNING log Bad Request: /purchase-requests/1/reject/
+2024-01-27 10:13:57,291 WARNING basehttp "POST /purchase-requests/1/reject/ HTTP/1.1" 400 45
+2024-01-27 10:14:42,215 WARNING views Failed to approve purchase request 1: User does not have permission to approve this request or the request is in an invalid state for approval.
+2024-01-27 10:14:42,216 WARNING log Bad Request: /purchase-requests/1/approve/
+2024-01-27 10:14:42,216 WARNING basehttp "POST /purchase-requests/1/approve/ HTTP/1.1" 400 105
+2024-01-27 10:14:44,604 WARNING log Bad Request: /purchase-requests/1/reject/
+2024-01-27 10:14:44,605 WARNING basehttp "POST /purchase-requests/1/reject/ HTTP/1.1" 400 45
+2024-01-27 10:14:45,727 WARNING log Bad Request: /purchase-requests/1/reject/
+2024-01-27 10:14:45,728 WARNING basehttp "POST /purchase-requests/1/reject/ HTTP/1.1" 400 45
+2024-01-27 10:15:06,211 INFO views Purchase request 1 approved by halo
+2024-01-27 10:18:09,457 WARNING views Failed to approve purchase request 6: User does not have permission to approve this request or the request is in an invalid state for approval.
+2024-01-27 10:18:09,457 WARNING log Bad Request: /purchase-requests/6/approve/
+2024-01-27 10:18:09,469 WARNING basehttp "POST /purchase-requests/6/approve/ HTTP/1.1" 400 105
+2024-01-27 10:18:38,318 WARNING log Bad Request: /purchase-requests/3/reject/
+2024-01-27 10:18:38,320 WARNING basehttp "POST /purchase-requests/3/reject/ HTTP/1.1" 400 45
+2024-01-27 10:18:40,026 WARNING views Failed to approve purchase request 3: User does not have permission to approve this request or the request is in an invalid state for approval.
+2024-01-27 10:18:40,027 WARNING log Bad Request: /purchase-requests/3/approve/
+2024-01-27 10:18:40,028 WARNING basehttp "POST /purchase-requests/3/approve/ HTTP/1.1" 400 105
+2024-01-27 10:25:09,612 WARNING views Failed to approve purchase request 3: User does not have permission to approve this request or the request is in an invalid state for approval.
+2024-01-27 10:25:09,614 WARNING log Bad Request: /purchase-requests/3/approve/
+2024-01-27 10:25:09,615 WARNING basehttp "POST /purchase-requests/3/approve/ HTTP/1.1" 400 105
+2024-01-27 10:25:12,272 WARNING log Bad Request: /purchase-requests/3/reject/
+2024-01-27 10:25:12,272 WARNING basehttp "POST /purchase-requests/3/reject/ HTTP/1.1" 400 45
+2024-01-27 10:25:56,711 INFO views Purchase request 7 approved by jad
+2024-01-27 10:26:12,259 WARNING views Failed to approve purchase request 7: User does not have permission to approve this request or the request is in an invalid state for approval.
+2024-01-27 10:26:12,260 WARNING log Bad Request: /purchase-requests/7/approve/
+2024-01-27 10:26:12,263 WARNING basehttp "POST /purchase-requests/7/approve/ HTTP/1.1" 400 105
+2024-01-27 10:26:27,652 INFO views Purchase request 7 approved by jad
+2024-01-27 12:05:01,431 WARNING views Failed to approve purchase request 7: User does not have permission to approve this request or the request is in an invalid state for approval.
+2024-01-27 12:05:01,432 WARNING log Bad Request: /purchase-requests/7/approve/
+2024-01-27 12:05:01,433 WARNING basehttp "POST /purchase-requests/7/approve/ HTTP/1.1" 400 105
