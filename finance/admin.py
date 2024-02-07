@@ -1,13 +1,14 @@
 from django.contrib import admin
-from .models import Profile, PurchaseRequest, Item, PurchaseRequestItem
+from .models import Profile, PurchaseRequest, Item, PurchaseRequestItem , BudgetLine ,ApprovalLog
+
 from django import forms
 # Register your models here.
 
 # Simple registration for Profile model
 admin.site.register(Profile)
-
+admin.site.register(BudgetLine)
 # Admin class for PurchaseRequest to customize admin interface
-
+admin.site.register(ApprovalLog)
 # Register PurchaseRequest with its admin class
 
 
@@ -28,7 +29,10 @@ class ApprovalAdmin(admin.ModelAdmin):
     list_display = ('purchase_request', 'approver', 'approval_type', 'status', 'approval_date')
     search_fields = ('purchase_request__document_reference', 'approver__username')
     list_filter = ('approval_type', 'status')
-
+class BudgetLineAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+    
 class PurchaseRequestItemForm(forms.ModelForm):
     total_cost_display = forms.CharField(label='Total Cost', required=False)
 
