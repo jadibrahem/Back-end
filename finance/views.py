@@ -1,7 +1,9 @@
 from datetime import timezone
+import decimal
+from MySQLdb import IntegrityError
 from django.shortcuts import get_object_or_404
-from .models import ApprovalLog, PurchaseRequest, Profile , Item ,PurchaseRequestItem , BudgetLine
-from .serializers import BudgetLineSerializer, PurchaseRequestSerializer , PurchaseRequestItemSerializer , ItemSerializer
+from .models import ApprovalLog, PurchaseRequest, Profile , Item ,PurchaseRequestItem , BudgetLine, QuotationRequest, QuotationItem, Supplier, QuotationTerms, Item
+from .serializers import BudgetLineSerializer, PurchaseRequestSerializer , PurchaseRequestItemSerializer , ItemSerializer ,QuotationRequestSerializer
 from rest_framework import viewsets, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -29,6 +31,9 @@ from reportlab.lib import colors
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 import io
 from django.core.exceptions import ValidationError
+from django.views.decorators.http import require_http_methods
+from decimal import Decimal, InvalidOperation
+
 logger = logging.getLogger(__name__)
 class LoginView(APIView):
     def post(self, request, format=None):
@@ -282,3 +287,165 @@ class ApprovalLogsView(APIView):
             } for log in approval_logs
         ]
         return Response(data)
+    
+###############################RFQ####################################################
+
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def create_quotation_request(request):
+    data = json.loads(request.body)
+    test_user_id = 1  # Assuming this is a valid user ID
+
+    try:
+        with transaction.atomic():
+            # Fetch the test user
+            test_user = User.objects.get(pk=test_user_id)
+
+            # Create or get the supplier
+            supplier_data = data.get('supplier', {})
+            supplier, created = Supplier.objects.get_or_create(
+                name=supplier_data.get('name'),
+                defaults={
+                    'address': supplier_data.get('address'),
+                    'contact_person': supplier_data.get('contact_person'),
+                    'email': supplier_data.get('email'),
+                    'telephone': supplier_data.get('telephone'),
+                }
+            )
+
+            # Prepare the quotation request reference
+            reference = f"RFQ{QuotationRequest.objects.count() + 1}/{now().year}"
+
+            # Create the quotation request
+            quotation_request = QuotationRequest(
+                created_by=test_user,
+                programme=data.get('programme'),
+                submission_date=data.get('submission_date'),
+                quotation_required_by=data.get('quotation_required_by'),
+                supplier=supplier,
+                reference=reference
+            )
+            quotation_request.save()
+
+            # Create the quotation items
+            items_data = data.get('items', [])
+            for item_data in data['items']:
+                item, _ = Item.objects.get_or_create(
+                    name=item_data['name'],
+                    defaults={
+                        'unit_cost': item_data['unit_cost'],
+                        'unit': item_data['unit'],
+                    }
+                )
+
+                QuotationItem.objects.create(
+                    quotation_request=quotation_request,
+                    item=item,
+                    quantity=item_data.get('quantity'),
+                    unit_rate=item_data.get('unit_rate'),
+                    lead_time=item_data.get('lead_time'),
+                    comments=item_data.get('comments')
+                )
+
+            # Create the quotation terms
+            terms_data = data.get('terms', {})
+            QuotationTerms.objects.create(
+                quotation_request=quotation_request,
+                payment_terms=terms_data.get('payment_terms'),
+                delivery_or_collection=terms_data.get('delivery_or_collection'),
+                delivery_costs=terms_data.get('delivery_costs'),
+                warranty_information=terms_data.get('warranty_information'),
+                validity=terms_data.get('validity')
+            )
+
+            return JsonResponse({'message': 'Quotation Request created successfully'}, status=201)
+
+    except IntegrityError as e:
+        if "Duplicate entry" in str(e) and "finance_quotationrequest.reference" in str(e):
+            try:
+                with transaction.atomic():
+                    # Increment the reference count to avoid duplication
+                    new_reference_count = QuotationRequest.objects.count() + 2  # Simple increment, might need a more robust solution
+                    new_reference = f"RFQ{new_reference_count}/{now().year}"
+
+                    # Update the quotation request with a new reference and save again
+                    quotation_request.reference = new_reference
+                    quotation_request.save()
+
+                    # Assuming items and terms are still valid, no need to recreate them
+
+                    return JsonResponse({'message': 'Quotation Request created successfully with a new reference'}, status=201)
+
+            except Exception as retry_exception:
+                return JsonResponse({'error': f"An error occurred on retry: {str(retry_exception)}"}, status=500)
+        else:
+            return JsonResponse({'error': f"An unexpected error occurred: {str(e)}"}, status=500)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_quotation_request_details(request, pk):
+    try:
+        quotation_request = QuotationRequest.objects.select_related('supplier', 'terms').prefetch_related('items__item').get(id=pk)
+
+        items_data = [
+            {
+                "id": item.id,
+                "name": item.item.name,
+                "description": item.item.description,
+                "unit_cost": item.unit_rate,
+                "quantity": item.quantity,
+                "unit": item.item.unit,
+                "total_cost": item.total_cost,
+                "lead_time": item.lead_time,
+                "comments": item.comments
+            } for item in quotation_request.items.all()
+        ]
+
+        quotation_request_data = {
+            "id": quotation_request.id,
+            "programme": quotation_request.programme,
+            "submission_date": quotation_request.submission_date.isoformat(),
+            "quotation_required_by": quotation_request.quotation_required_by.isoformat(),
+            "supplier": {
+                "name": quotation_request.supplier.name,
+                "address": quotation_request.supplier.address,
+                "contact_person": quotation_request.supplier.contact_person,
+                "email": quotation_request.supplier.email,
+                "telephone": quotation_request.supplier.telephone
+            },
+            "reference": quotation_request.reference,
+            "created_by": quotation_request.created_by.username,
+            "items": items_data,
+            "terms": {
+                "payment_terms": quotation_request.terms.payment_terms,
+                "delivery_or_collection": quotation_request.terms.delivery_or_collection,
+                "delivery_costs": quotation_request.terms.delivery_costs,
+                "warranty_information": quotation_request.terms.warranty_information,
+                "validity": quotation_request.terms.validity
+            }
+        }
+    
+        return JsonResponse(quotation_request_data)
+
+    except QuotationRequest.DoesNotExist:
+        return HttpResponseNotFound(json.dumps({"error": "Quotation request not found"}), content_type="application/json")
+@api_view(['GET'])
+
+def list_quotation_requests(request):
+    quotation_requests = QuotationRequest.objects.all()
+    serializer = QuotationRequestSerializer(quotation_requests, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+
+def quotation_request_details(request, pk):
+    try:
+        quotation_request = QuotationRequest.objects.get(pk=pk)
+        serializer = QuotationRequestSerializer(quotation_request)
+        return Response(serializer.data)
+    except QuotationRequest.DoesNotExist:
+        return Response({'error': 'Quotation Request not found'}, status=status.HTTP_404_NOT_FOUND)

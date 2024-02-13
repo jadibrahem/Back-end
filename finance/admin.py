@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Profile, PurchaseRequest, Item, PurchaseRequestItem , BudgetLine ,ApprovalLog
+from .models import Profile, PurchaseRequest, Item, PurchaseRequestItem , BudgetLine ,ApprovalLog , Supplier, QuotationRequest, QuotationItem, QuotationTerms
+
 
 from django import forms
 # Register your models here.
@@ -63,3 +64,22 @@ class PurchaseRequestAdmin(admin.ModelAdmin):
 
 
 admin.site.register(PurchaseRequest, PurchaseRequestAdmin)
+
+
+
+@admin.register(Supplier)
+class SupplierAdmin(admin.ModelAdmin):
+    list_display = ['name', 'address', 'contact_person', 'email', 'telephone']
+
+@admin.register(QuotationRequest)
+class QuotationRequestAdmin(admin.ModelAdmin):
+    list_display = ['reference', 'programme', 'submission_date', 'quotation_required_by', 'supplier']
+    readonly_fields = ['reference']  # Make reference read-only if it's auto-generated
+
+@admin.register(QuotationItem)
+class QuotationItemAdmin(admin.ModelAdmin):
+    list_display = ['quotation_request', 'item', 'quantity', 'unit_rate', 'total_cost']
+
+@admin.register(QuotationTerms)
+class QuotationTermsAdmin(admin.ModelAdmin):
+    list_display = ['quotation_request', 'payment_terms', 'delivery_or_collection', 'delivery_costs', 'warranty_information', 'validity']

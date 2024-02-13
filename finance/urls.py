@@ -1,6 +1,6 @@
 from django.urls import path
 from finance import views  
-from finance.views import LoginView , current_user , document_reference , ItemListView , ApprovalLogsView 
+from finance.views import LoginView , current_user , document_reference , ItemListView , ApprovalLogsView , list_quotation_requests, quotation_request_details
 urlpatterns = [
     # Other URL patterns for your project
     path('finance/login/', LoginView.as_view(), name='login'),
@@ -17,4 +17,8 @@ urlpatterns = [
     path('current-user/', current_user),
     path('document-reference/', document_reference),
     path('create-purchase-request/', views.create_purchase_request, name='create_purchase_request'),
+    ########RFQ############
+    path('quotation-requests/', views.list_quotation_requests, name='list-quotation-requests'),
+    path('quotation-requests/create/', views.create_quotation_request, name='create-quotation-request'),
+    path('quotation-requests/<int:pk>/', views.get_quotation_request_details, name='quotation-request-details'),
 ]

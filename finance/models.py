@@ -150,3 +150,72 @@ class PurchaseRequestItem(models.Model):
     def __str__(self):
         return f"{self.item.name} x {self.quantity}"
     
+
+
+
+class Supplier(models.Model):
+    name = models.CharField(max_length=255)
+    address = models.TextField()
+    contact_person = models.CharField(max_length=255)
+    email = models.EmailField()
+    telephone = models.CharField(max_length=50)
+    # Other supplier fields as needed
+
+    def __str__(self):
+        return self.name
+
+class QuotationRequest(models.Model):
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='quotation_requests')
+    programme = models.CharField(max_length=255)
+    submission_date = models.DateField(default=now)
+    reference = models.CharField(max_length=255, unique=True)
+    quotation_required_by = models.DateField()
+    supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE, related_name='quotations')
+    # Other RFQ specific fields as needed
+
+    def save(self, *args, **kwargs):
+        if not self.reference:
+            current_year = now().year
+            # Get the last quotation request's reference number and increment it
+            last_reference = QuotationRequest.objects.filter(reference__startswith='RFQ', reference__endswith=f'/{str(current_year)[-2:]}').order_by('reference').last()
+            if last_reference:
+                last_number = int(last_reference.reference.split('/')[1][3:])  # Assuming format 'RFQ00X/YY'
+                new_number = last_number + 1
+            else:
+                new_number = 1  # Start with 1 if no previous reference exists
+
+            # Format the new reference number
+            new_reference = f'RFQ{str(new_number).zfill(3)}/{str(current_year)[-2:]}'
+            self.reference = new_reference
+
+        super(QuotationRequest, self).save(*args, **kwargs)
+    def __str__(self):
+        return f"{self.reference} - {self.programme}"
+
+
+class QuotationItem(models.Model):
+    quotation_request = models.ForeignKey(QuotationRequest, on_delete=models.CASCADE, related_name='items')
+    item = models.ForeignKey(Item, on_delete=models.PROTECT)
+    quantity = models.IntegerField()
+    unit_rate = models.DecimalField(max_digits=10, decimal_places=2)
+    total_cost = models.DecimalField(max_digits=12, decimal_places=2, editable=False)
+    lead_time = models.CharField(max_length=255, blank=True)
+    comments = models.TextField(blank=True)
+
+    def save(self, *args, **kwargs):
+        self.total_cost = self.unit_rate * self.quantity
+        super(QuotationItem, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.item.name} x {self.quantity}"
+
+class QuotationTerms(models.Model):
+    quotation_request = models.OneToOneField(QuotationRequest, on_delete=models.CASCADE, related_name='terms')
+    payment_terms = models.TextField()
+    delivery_or_collection = models.CharField(max_length=255)
+    delivery_costs = models.CharField(max_length=255, blank=True)
+    warranty_information = models.TextField(blank=True)
+    validity = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"Terms for {self.quotation_request.reference}"

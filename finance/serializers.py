@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import PurchaseRequest, Item, PurchaseRequestItem, BudgetLine
+from .models import PurchaseRequest, Item, PurchaseRequestItem, BudgetLine ,Supplier, QuotationRequest, QuotationItem, QuotationTerms
+
 
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
@@ -81,4 +82,54 @@ class PurchaseRequestSerializer(serializers.ModelSerializer):
         for item_data in items_data:
             PurchaseRequestItemSerializer().create({'purchase_request': purchase_request, **item_data})
 
-        return purchase_request
+        return purchase_request    
+class SupplierSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Supplier
+        fields = '__all__'
+
+class QuotationItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuotationItem
+        fields = '__all__'
+
+class QuotationTermsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuotationTerms
+        fields = '__all__'    
+class QuotationRequestSerializer(serializers.ModelSerializer):
+    supplier = SupplierSerializer()
+    items = QuotationItemSerializer(many=True)
+    terms = QuotationTermsSerializer()
+
+    class Meta:
+        model = QuotationRequest
+        fields = '__all__'
+
+    def create(self, validated_data):
+        supplier_data = validated_data.pop('supplier', None)
+        items_data = validated_data.pop('items', [])
+        terms_data = validated_data.pop('terms', None)
+
+        # Handle the creation of the supplier if it doesn't exist
+        if supplier_data:
+            supplier, _ = Supplier.objects.get_or_create(**supplier_data)
+            validated_data['supplier'] = supplier
+        else:
+            raise serializers.ValidationError("Supplier data is required.")
+
+        # Create the quotation request
+        quotation_request = QuotationRequest.objects.create(**validated_data)
+
+        # Handle the creation of each item
+        for item_data in items_data:
+            # You may need to extract and handle nested 'item' data if 'QuotationItem' has a foreign key to 'Item'
+            QuotationItem.objects.create(quotation_request=quotation_request, **item_data)
+
+        # Handle the creation of quotation terms
+        if terms_data:
+            QuotationTerms.objects.create(quotation_request=quotation_request, **terms_data)
+        else:
+            raise serializers.ValidationError("Quotation terms data is required.")
+
+        return quotation_request
