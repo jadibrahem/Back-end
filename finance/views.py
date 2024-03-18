@@ -1,4 +1,4 @@
-from datetime import timezone
+from datetime import timedelta, timezone
 import decimal
 from MySQLdb import IntegrityError
 from django.shortcuts import get_object_or_404
@@ -23,7 +23,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.views.decorators.http import require_POST
 import logging
-from django.db.models import Sum
+from django.db.models import Count, Sum
 from django.template.loader import get_template
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
@@ -33,6 +33,8 @@ import io
 from django.core.exceptions import ValidationError
 from django.views.decorators.http import require_http_methods
 from decimal import Decimal, InvalidOperation
+from rest_framework.exceptions import PermissionDenied
+
 
 logger = logging.getLogger(__name__)
 class LoginView(APIView):
@@ -87,9 +89,20 @@ def budget_lines_list(request):
 
 
 class PurchaseRequestViewSet(viewsets.ModelViewSet):
-    queryset = PurchaseRequest.objects.all()
     serializer_class = PurchaseRequestSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        profile = Profile.objects.get(user=user)
+
+        if profile.user_type == 'user':
+            return PurchaseRequest.objects.filter(created_by=user)
+        elif profile.user_type in ['budget_holder', 'finance_checker']:
+            return PurchaseRequest.objects.all()
+        else:
+            # Optionally, handle unexpected user types
+            raise PermissionDenied("You do not have permission to view these items.")
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
@@ -158,7 +171,81 @@ def create_purchase_request(request):
         # Log the error here for more details
         return HttpResponseBadRequest(f'An error occurred: {str(e)}')
   
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def purchase_request_details(request, request_id):
+    if request.method == 'GET':
+        try:
+            purchase_request = PurchaseRequest.objects.prefetch_related('items__item', 'items__budget_line').get(id=request_id, created_by=request.user)
 
+            items_data = [{
+                "id": item.id,
+                "description": item.item.description,
+                "unit_cost": item.item.unit_cost,
+                "quantity": item.quantity,
+                "currency": item.currency,
+                "donor": item.donor,
+                "budget_line": item.budget_line.id if item.budget_line else None,
+                "comments": item.comments,
+                "unit": item.item.unit,
+                "total_cost": item.total_cost,
+            } for item in purchase_request.items.all()]
+
+            purchase_request_data = {
+                "id": purchase_request.id,
+                "programme": purchase_request.programme,
+                "document_reference": purchase_request.document_reference,
+                "purchase_request_date": purchase_request.purchase_request_date.isoformat(),
+                "location_required": purchase_request.location_required,
+                "date_required": purchase_request.date_required.isoformat(),
+                "created_by": purchase_request.created_by.username,
+                "status": purchase_request.status,
+                "total_cost": purchase_request.total_cost,
+                "comments": purchase_request.comments,
+                "items": items_data,
+            }
+
+            return JsonResponse(purchase_request_data)
+        except PurchaseRequest.DoesNotExist:
+            return HttpResponseNotFound('Purchase request not found')
+
+    elif request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            with transaction.atomic():
+                # Assuming you're only updating items within the Purchase Request
+                for item_data in data['items']:
+                    purchase_request_item = PurchaseRequestItem.objects.get(id=item_data['id'], purchase_request_id=request_id)
+
+                    item = purchase_request_item.item
+                    item.description = item_data.get('description', item.description)
+                    item.unit_cost = item_data.get('unit_cost', item.unit_cost)
+                    item.unit = item_data.get('unit', item.unit)
+                    item.save()
+
+                    purchase_request_item.quantity = item_data.get('quantity', purchase_request_item.quantity)
+                    purchase_request_item.comments = item_data.get('comments', purchase_request_item.comments)
+                    purchase_request_item.total_cost = item_data.get('unit_cost', purchase_request_item.item.unit_cost) * item_data.get('quantity', purchase_request_item.quantity)
+                    if 'budget_line' in item_data:
+                        purchase_request_item.budget_line = BudgetLine.objects.get(id=item_data['budget_line'])
+                    purchase_request_item.save()
+
+                # Optionally, recalculate and update the total cost of the purchase request
+                purchase_request = PurchaseRequest.objects.get(id=request_id)
+                total_cost = sum([item.total_cost for item in purchase_request.items.all()])
+                purchase_request.total_cost = total_cost
+                purchase_request.save()
+
+            return JsonResponse({'status': 'success', 'message': 'Purchase request updated successfully.'})
+        except json.JSONDecodeError:
+            return HttpResponseBadRequest('Invalid JSON')
+        except KeyError as e:
+            return HttpResponseBadRequest(f'Missing key: {e}')
+        except Exception as e:
+            return HttpResponseBadRequest(f'An error occurred: {str(e)}')
+
+    else:
+        return HttpResponseBadRequest('Invalid request method')
  
 @permission_classes([IsAuthenticated])
 def get_purchase_request_details(request, request_id):
@@ -199,40 +286,40 @@ def get_purchase_request_details(request, request_id):
     except PurchaseRequest.DoesNotExist:
         return HttpResponseNotFound(json.dumps({"error": "Purchase request not found"}), content_type="application/json")
 
-@api_view(['PATCH', 'POST'])
+@api_view(['PATCH'])
 @permission_classes([IsAuthenticated])
 def update_item(request, item_id):
     try:
         item_data = json.loads(request.body)
         
-        # Fetch the PurchaseRequestItem instance
-        purchase_request_item = PurchaseRequestItem.objects.get(id=item_id)
-        
-        # Access the related Item instance
-        item = purchase_request_item.item
+        with transaction.atomic():
+            purchase_request_item = PurchaseRequestItem.objects.select_related('item').get(id=item_id)
+            
+            item = purchase_request_item.item
+            if 'unit_cost' in item_data:
+                item.unit_cost = item_data['unit_cost']
+                item.save()
 
-        # Check if 'unit_cost' is in the request body and update the related Item instance
-        if 'unit_cost' in item_data:
-            item.unit_cost = item_data['unit_cost']
-            item.save()
+            purchase_request_item.quantity = item_data.get('quantity', purchase_request_item.quantity)
+            purchase_request_item.comments = item_data.get('comments', purchase_request_item.comments)
+            purchase_request_item.save()
 
-        # Update fields on PurchaseRequestItem if needed
-        purchase_request_item.quantity = item_data.get('quantity', purchase_request_item.quantity)
-        purchase_request_item.comments = item_data.get('comments', purchase_request_item.comments)
-        # Add more fields as necessary
+            updated_data = {
+                "id": purchase_request_item.id,
+                "description": item.description,
+                "unit_cost": item.unit_cost,
+                "quantity": purchase_request_item.quantity,
+                "comments": purchase_request_item.comments,
+                # Include other fields as needed
+            }
+            return JsonResponse(updated_data, status=status.HTTP_200_OK)
 
-        purchase_request_item.save()
-        return JsonResponse({'status': 'success', 'message': 'Item updated successfully.'})
-    except ValidationError as e:
-            logger.error(f"Validation error: {e}")
-            return HttpResponseBadRequest(f"Validation error: {e}")
-    except Exception as e:
-            logger.error(f"Unhandled error: {e}")
-            return HttpResponseBadRequest(f"Unhandled error: {e}")
     except PurchaseRequestItem.DoesNotExist:
         return HttpResponseNotFound(json.dumps({"error": "Purchase request item not found"}), content_type="application/json")
     except json.JSONDecodeError:
         return HttpResponseBadRequest('Invalid JSON')
+    except ValidationError as e:
+        return HttpResponseBadRequest(f"Validation error: {str(e)}")
     except Exception as e:
         return HttpResponseBadRequest(f'An error occurred: {str(e)}')
 
@@ -395,7 +482,7 @@ def get_quotation_request_details(request, pk):
                 "id": item.id,
                 "name": item.item.name,
                 "description": item.item.description,
-                "unit_cost": item.unit_rate,
+                "unit_rate": item.unit_rate,
                 "quantity": item.quantity,
                 "unit": item.item.unit,
                 "total_cost": item.total_cost,
@@ -449,3 +536,66 @@ def quotation_request_details(request, pk):
         return Response(serializer.data)
     except QuotationRequest.DoesNotExist:
         return Response({'error': 'Quotation Request not found'}, status=status.HTTP_404_NOT_FOUND)
+    
+
+
+
+
+def dashboard_data(request):
+    # Counts by status for Purchase Requests
+    pr_status_count = PurchaseRequest.objects.values('status').annotate(total=Count('status'))
+
+    # Counts by status for RFQs
+    rfq_count = QuotationRequest.objects.count()
+
+    # Upcoming deadlines for PRs in the next 7 days
+    upcoming_pr_deadlines = PurchaseRequest.objects.filter(
+        date_required__range=[now(), now() + timedelta(days=7)]
+    ).count()
+
+    # Upcoming deadlines for RFQs in the next 7 days
+    upcoming_rfq_deadlines = QuotationRequest.objects.filter(
+        quotation_required_by__range=[now(), now() + timedelta(days=7)]
+    ).count()
+
+    # Total cost of approved PRs
+    approved_pr_cost = PurchaseRequest.objects.filter(
+        status='approved'
+    ).aggregate(total_cost=Sum('total_cost'))
+
+    # Recent PRs and RFQs (last 5)
+    recent_prs = list(PurchaseRequest.objects.order_by('-purchase_request_date')[:5].values())
+    recent_rfqs = list(QuotationRequest.objects.order_by('-submission_date')[:5].values())
+    items_cost_by_budget_line = PurchaseRequestItem.objects.values(
+        'budget_line__name'
+    ).annotate(total_cost=Sum('total_cost')).order_by('-total_cost')
+
+    # Most used items
+    most_used_items = PurchaseRequestItem.objects.values(
+        'item__name'
+    ).annotate(total_quantity=Sum('quantity')).order_by('-total_quantity')[:5]
+        # Money spent for each type of budget line
+    money_spent_by_budget_line = PurchaseRequestItem.objects.values(
+        'budget_line__name'
+    ).annotate(total_cost=Sum('total_cost')).order_by('-total_cost')
+
+    # Most bought items in Purchase Requests
+    most_bought_items = PurchaseRequestItem.objects.values(
+        'item__name'
+    ).annotate(total_quantity=Sum('quantity')).order_by('-total_quantity')[:5]
+
+    data = {
+        'pr_status_count': list(pr_status_count),
+        'rfq_count': rfq_count,
+        'upcoming_pr_deadlines': upcoming_pr_deadlines,
+        'upcoming_rfq_deadlines': upcoming_rfq_deadlines,
+        'approved_pr_cost': approved_pr_cost,
+        'recent_prs': recent_prs,
+        'recent_rfqs': recent_rfqs,
+        'items_cost_by_budget_line': list(items_cost_by_budget_line),
+        'most_used_items': list(most_used_items),
+        'money_spent_by_budget_line': list(money_spent_by_budget_line),
+        'most_bought_items': list(most_bought_items),
+    }
+
+    return JsonResponse(data)

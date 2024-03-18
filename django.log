@@ -9984,3 +9984,701 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^^^^^^^
 TypeError: get_quotation_request_details() got an unexpected keyword argument 'pk'
 2024-02-13 07:41:02,167 ERROR basehttp "GET /quotation-requests/61/ HTTP/1.1" 500 97290
+2024-02-14 09:20:43,306 INFO views Purchase request 1 approved by halo
+2024-02-14 09:21:09,754 WARNING views Failed to approve purchase request 25: User does not have permission to approve this request or the request is in an invalid state for approval.
+2024-02-14 09:21:09,759 WARNING log Bad Request: /purchase-requests/25/approve/
+2024-02-14 09:21:09,759 WARNING basehttp "POST /purchase-requests/25/approve/ HTTP/1.1" 400 105
+2024-02-18 13:30:40,569 WARNING log Unauthorized: /purchase-requests/
+2024-02-18 13:30:40,570 WARNING basehttp "GET /purchase-requests/ HTTP/1.1" 401 27
+2024-02-18 13:30:40,578 WARNING log Unauthorized: /purchase-requests/
+2024-02-18 13:30:40,579 WARNING basehttp "GET /purchase-requests/ HTTP/1.1" 401 27
+2024-02-18 13:50:49,129 WARNING log Not Found: /favicon.ico
+2024-02-18 13:50:49,130 WARNING basehttp "GET /favicon.ico HTTP/1.1" 404 13984
+2024-02-20 07:26:44,517 ERROR views Validation error: ['“20.0020.0020.00” value must be a decimal number.']
+2024-02-20 07:26:44,519 WARNING log Bad Request: /items/22/
+2024-02-20 07:26:44,520 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 07:26:45,550 ERROR views Validation error: ['“20.0020.0020.00” value must be a decimal number.']
+2024-02-20 07:26:45,551 WARNING log Bad Request: /items/22/
+2024-02-20 07:26:45,552 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 07:27:03,783 ERROR views Validation error: ['“20.0020.0020.00” value must be a decimal number.']
+2024-02-20 07:27:03,784 WARNING log Bad Request: /items/22/
+2024-02-20 07:27:03,785 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 07:27:04,621 ERROR views Validation error: ['“20.0020.0020.00” value must be a decimal number.']
+2024-02-20 07:27:04,621 WARNING log Bad Request: /items/22/
+2024-02-20 07:27:04,622 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 07:27:04,820 ERROR views Validation error: ['“20.0020.0020.00” value must be a decimal number.']
+2024-02-20 07:27:04,820 WARNING log Bad Request: /items/22/
+2024-02-20 07:27:04,821 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 07:27:10,907 ERROR views Validation error: ['“21.0021.0021.00” value must be a decimal number.']
+2024-02-20 07:27:10,908 WARNING log Bad Request: /items/22/
+2024-02-20 07:27:10,909 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 07:27:12,013 ERROR views Validation error: ['“21.0021.0021.00” value must be a decimal number.']
+2024-02-20 07:27:12,013 WARNING log Bad Request: /items/22/
+2024-02-20 07:27:12,013 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 07:27:12,229 ERROR views Validation error: ['“21.0021.0021.00” value must be a decimal number.']
+2024-02-20 07:27:12,229 WARNING log Bad Request: /items/22/
+2024-02-20 07:27:12,230 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 07:27:36,338 ERROR views Validation error: ['“21.0021.0021.00” value must be a decimal number.']
+2024-02-20 07:27:36,340 WARNING log Bad Request: /items/22/
+2024-02-20 07:27:36,340 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 07:27:37,018 ERROR views Validation error: ['“21.0021.0021.00” value must be a decimal number.']
+2024-02-20 07:27:37,020 WARNING log Bad Request: /items/22/
+2024-02-20 07:27:37,021 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 07:27:37,184 ERROR views Validation error: ['“21.0021.0021.00” value must be a decimal number.']
+2024-02-20 07:27:37,185 WARNING log Bad Request: /items/22/
+2024-02-20 07:27:37,185 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 07:27:37,361 ERROR views Validation error: ['“21.0021.0021.00” value must be a decimal number.']
+2024-02-20 07:27:37,362 WARNING log Bad Request: /items/22/
+2024-02-20 07:27:37,364 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 07:27:37,535 ERROR views Validation error: ['“21.0021.0021.00” value must be a decimal number.']
+2024-02-20 07:27:37,536 WARNING log Bad Request: /items/22/
+2024-02-20 07:27:37,538 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 07:27:37,707 ERROR views Validation error: ['“21.0021.0021.00” value must be a decimal number.']
+2024-02-20 07:27:37,708 WARNING log Bad Request: /items/22/
+2024-02-20 07:27:37,708 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 07:27:43,384 ERROR views Validation error: ['“22.0022.0022.0022.0022.00” value must be a decimal number.']
+2024-02-20 07:27:43,385 WARNING log Bad Request: /items/23/
+2024-02-20 07:27:43,386 WARNING basehttp "PATCH /items/23/ HTTP/1.1" 400 85
+2024-02-20 07:27:44,080 ERROR views Validation error: ['“22.0022.0022.0022.0022.00” value must be a decimal number.']
+2024-02-20 07:27:44,081 WARNING log Bad Request: /items/23/
+2024-02-20 07:27:44,081 WARNING basehttp "PATCH /items/23/ HTTP/1.1" 400 85
+2024-02-20 07:27:44,251 ERROR views Validation error: ['“22.0022.0022.0022.0022.00” value must be a decimal number.']
+2024-02-20 07:27:44,252 WARNING log Bad Request: /items/23/
+2024-02-20 07:27:44,253 WARNING basehttp "PATCH /items/23/ HTTP/1.1" 400 85
+2024-02-20 07:27:44,422 ERROR views Validation error: ['“22.0022.0022.0022.0022.00” value must be a decimal number.']
+2024-02-20 07:27:44,422 WARNING log Bad Request: /items/23/
+2024-02-20 07:27:44,423 WARNING basehttp "PATCH /items/23/ HTTP/1.1" 400 85
+2024-02-20 07:27:44,614 ERROR views Validation error: ['“22.0022.0022.0022.0022.00” value must be a decimal number.']
+2024-02-20 07:27:44,615 WARNING log Bad Request: /items/23/
+2024-02-20 07:27:44,616 WARNING basehttp "PATCH /items/23/ HTTP/1.1" 400 85
+2024-02-20 07:27:50,297 ERROR views Unhandled error: can't multiply sequence by non-int of type 'str'
+2024-02-20 07:27:50,297 WARNING log Bad Request: /items/23/
+2024-02-20 07:27:50,298 WARNING basehttp "PATCH /items/23/ HTTP/1.1" 400 65
+2024-02-20 08:03:55,224 WARNING log Bad Request: /items/22/
+2024-02-20 08:03:55,225 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 08:04:00,662 WARNING log Bad Request: /items/22/
+2024-02-20 08:04:00,663 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 08:11:28,844 WARNING log Bad Request: /items/22/
+2024-02-20 08:11:28,846 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 08:11:38,875 WARNING log Bad Request: /items/22/
+2024-02-20 08:11:38,876 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 08:12:03,161 WARNING log Bad Request: /items/23/
+2024-02-20 08:12:03,162 WARNING basehttp "PATCH /items/23/ HTTP/1.1" 400 67
+2024-02-20 08:23:28,947 WARNING log Bad Request: /items/22/
+2024-02-20 08:23:28,949 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 08:51:37,331 WARNING log Forbidden (Origin checking failed - http://localhost:3000 does not match any trusted origins.): /purchase-requests/28/
+2024-02-20 08:51:37,332 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 403 2569
+2024-02-20 08:51:41,360 WARNING log Forbidden (Origin checking failed - http://localhost:3000 does not match any trusted origins.): /purchase-requests/28/
+2024-02-20 08:51:41,361 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 403 2569
+2024-02-20 08:51:45,901 WARNING log Forbidden (Origin checking failed - http://localhost:3000 does not match any trusted origins.): /purchase-requests/28/
+2024-02-20 08:51:45,903 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 403 2569
+2024-02-20 08:51:46,366 WARNING log Forbidden (Origin checking failed - http://localhost:3000 does not match any trusted origins.): /purchase-requests/28/
+2024-02-20 08:51:46,367 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 403 2569
+2024-02-20 08:52:00,153 WARNING log Forbidden (Origin checking failed - http://localhost:3000 does not match any trusted origins.): /purchase-requests/28/
+2024-02-20 08:52:00,157 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 403 2569
+2024-02-20 08:57:31,897 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 08:57:31,898 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 72
+2024-02-20 08:57:34,568 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 08:57:34,570 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 72
+2024-02-20 08:57:35,153 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 08:57:35,154 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 72
+2024-02-20 08:58:17,027 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 08:58:17,027 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 72
+2024-02-20 09:17:06,758 WARNING log Not Found: /purchase-requests/28/details
+2024-02-20 09:17:06,759 WARNING basehttp "GET /purchase-requests/28/details HTTP/1.1" 404 14035
+2024-02-20 09:17:06,768 WARNING log Not Found: /purchase-requests/28/details
+2024-02-20 09:17:06,769 WARNING basehttp "GET /purchase-requests/28/details HTTP/1.1" 404 14035
+2024-02-20 09:17:29,283 WARNING log Not Found: /purchase-requests/28/details
+2024-02-20 09:17:29,284 WARNING basehttp "GET /purchase-requests/28/details HTTP/1.1" 404 14035
+2024-02-20 09:17:29,300 WARNING log Not Found: /purchase-requests/28/details
+2024-02-20 09:17:29,301 WARNING basehttp "GET /purchase-requests/28/details HTTP/1.1" 404 14035
+2024-02-20 09:52:24,818 WARNING log Bad Request: /items/22/
+2024-02-20 09:52:24,819 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 10:01:16,418 WARNING log Not Found: /purchase-requests/details/28/
+2024-02-20 10:01:16,419 WARNING basehttp "GET /purchase-requests/details/28/ HTTP/1.1" 404 14038
+2024-02-20 10:01:32,644 WARNING log Not Found: /purchase-requests/details/28/
+2024-02-20 10:01:32,646 WARNING basehttp "POST /purchase-requests/details/28/ HTTP/1.1" 404 14039
+2024-02-20 10:01:37,823 WARNING views Failed to approve purchase request 28: User does not have permission to approve this request or the request is in an invalid state for approval.
+2024-02-20 10:01:37,825 WARNING log Bad Request: /purchase-requests/28/approve/
+2024-02-20 10:01:37,826 WARNING basehttp "POST /purchase-requests/28/approve/ HTTP/1.1" 400 105
+2024-02-20 10:01:42,637 WARNING log Not Found: /purchase-requests/details/28/
+2024-02-20 10:01:42,638 WARNING basehttp "POST /purchase-requests/details/28/ HTTP/1.1" 404 14039
+2024-02-20 10:01:49,638 WARNING log Not Found: /purchase-requests/details/28/
+2024-02-20 10:01:49,639 WARNING basehttp "POST /purchase-requests/details/28/ HTTP/1.1" 404 14039
+2024-02-20 10:02:28,369 WARNING log Not Found: /purchase-requests/details/28/
+2024-02-20 10:02:28,370 WARNING basehttp "POST /purchase-requests/details/28/ HTTP/1.1" 404 14039
+2024-02-20 10:02:41,197 WARNING log Not Found: /purchase-requests/details/28/
+2024-02-20 10:02:41,197 WARNING basehttp "POST /purchase-requests/details/28/ HTTP/1.1" 404 14039
+2024-02-20 10:03:13,008 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 10:03:13,009 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 67
+2024-02-20 10:03:17,744 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 10:03:17,745 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 67
+2024-02-20 10:04:33,209 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 10:04:33,210 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 76
+2024-02-20 10:04:37,514 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 10:04:37,515 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 76
+2024-02-20 10:04:43,797 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 10:04:43,799 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 76
+2024-02-20 10:04:45,937 WARNING views Failed to approve purchase request 28: User does not have permission to approve this request or the request is in an invalid state for approval.
+2024-02-20 10:04:45,938 WARNING log Bad Request: /purchase-requests/28/approve/
+2024-02-20 10:04:45,939 WARNING basehttp "POST /purchase-requests/28/approve/ HTTP/1.1" 400 105
+2024-02-20 10:04:53,878 WARNING views Failed to approve purchase request 28: User does not have permission to approve this request or the request is in an invalid state for approval.
+2024-02-20 10:04:53,879 WARNING log Bad Request: /purchase-requests/28/approve/
+2024-02-20 10:04:53,880 WARNING basehttp "POST /purchase-requests/28/approve/ HTTP/1.1" 400 105
+2024-02-20 10:12:00,396 WARNING log Bad Request: /items/22/
+2024-02-20 10:12:00,396 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 11:36:50,422 WARNING log Bad Request: /items/22/
+2024-02-20 11:36:50,424 WARNING basehttp "PATCH /items/22/ HTTP/1.1" 400 75
+2024-02-20 12:35:30,812 WARNING log Not Found: /purchase-requests/details/28/
+2024-02-20 12:35:30,813 WARNING basehttp "GET /purchase-requests/details/28/ HTTP/1.1" 404 14038
+2024-02-20 12:35:30,830 WARNING log Not Found: /purchase-requests/details/28/
+2024-02-20 12:35:30,831 WARNING basehttp "GET /purchase-requests/details/28/ HTTP/1.1" 404 14038
+2024-02-20 12:37:08,767 WARNING log Not Found: /purchase-requests/details/28/
+2024-02-20 12:37:08,769 WARNING basehttp "POST /purchase-requests/details/28/ HTTP/1.1" 404 14039
+2024-02-20 12:38:01,442 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:38:01,443 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 76
+2024-02-20 12:38:04,293 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:38:04,294 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 76
+2024-02-20 12:38:52,582 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:38:52,583 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 67
+2024-02-20 12:41:25,449 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:41:25,450 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 67
+2024-02-20 12:42:46,896 WARNING log Not Found: /purchase-requests/details/28/
+2024-02-20 12:42:46,898 WARNING basehttp "POST /purchase-requests/details/28/ HTTP/1.1" 404 14039
+2024-02-20 12:43:33,712 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:43:33,714 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 12:43:48,421 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:43:48,423 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 12:45:11,344 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:45:11,345 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 12:45:17,822 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:45:17,823 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 12:45:47,586 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:45:47,587 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 12:46:53,577 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:46:53,579 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 80
+2024-02-20 12:47:00,442 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:47:00,443 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 80
+2024-02-20 12:47:01,135 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:47:01,136 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 80
+2024-02-20 12:47:01,826 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:47:01,827 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 80
+2024-02-20 12:47:20,608 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:47:20,609 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 80
+2024-02-20 12:47:29,143 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:47:29,144 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 80
+2024-02-20 12:47:48,826 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:47:48,827 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 12:47:54,753 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:47:54,754 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 12:48:01,403 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 12:48:01,404 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 12:50:02,588 WARNING log Not Found: /purchase-requests/details/28/
+2024-02-20 12:50:02,590 WARNING basehttp "POST /purchase-requests/details/28/ HTTP/1.1" 404 14039
+2024-02-20 13:12:28,677 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:12:28,679 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 80
+2024-02-20 13:13:07,049 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:13:07,051 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:13:18,843 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:13:18,846 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:13:20,097 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:13:20,100 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:18:49,191 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:18:49,192 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:21:07,088 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:21:07,091 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:21:12,175 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:21:12,177 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:21:59,800 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:21:59,802 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:25:41,719 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:25:41,721 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:32:03,449 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:32:03,451 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:32:05,202 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:32:05,204 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:32:05,350 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:32:05,353 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:32:05,543 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:32:05,545 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:32:05,703 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:32:05,705 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:32:05,871 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:32:05,873 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:32:06,044 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:32:06,047 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:32:06,227 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:32:06,229 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:33:48,185 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:33:48,186 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 76
+2024-02-20 13:33:50,696 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:33:50,699 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:33:54,710 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:33:54,712 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:33:56,228 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:33:56,230 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 76
+2024-02-20 13:33:56,965 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:33:56,967 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 76
+2024-02-20 13:34:08,806 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:34:08,808 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:34:44,657 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:34:44,660 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-20 13:34:46,387 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 13:34:46,389 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 76
+2024-02-20 14:06:01,001 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 14:06:01,003 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 91
+2024-02-20 14:08:08,037 WARNING log Bad Request: /purchase-requests/28/
+2024-02-20 14:08:08,039 WARNING basehttp "POST /purchase-requests/28/ HTTP/1.1" 400 86
+2024-02-21 07:22:48,308 WARNING log Not Found: /dashboard/
+2024-02-21 07:22:48,309 WARNING basehttp "GET /dashboard/ HTTP/1.1" 404 14164
+2024-02-21 07:22:48,329 WARNING log Not Found: /dashboard/
+2024-02-21 07:22:48,329 WARNING basehttp "GET /dashboard/ HTTP/1.1" 404 14164
+2024-02-21 07:22:52,065 WARNING log Not Found: /dashboard/
+2024-02-21 07:22:52,066 WARNING basehttp "GET /dashboard/ HTTP/1.1" 404 14164
+2024-02-21 07:22:52,087 WARNING log Not Found: /dashboard/
+2024-02-21 07:22:52,088 WARNING basehttp "GET /dashboard/ HTTP/1.1" 404 14164
+2024-02-21 07:22:53,093 WARNING log Not Found: /dashboard/
+2024-02-21 07:22:53,094 WARNING basehttp "GET /dashboard/ HTTP/1.1" 404 14164
+2024-02-21 07:22:53,112 WARNING log Not Found: /dashboard/
+2024-02-21 07:22:53,114 WARNING basehttp "GET /dashboard/ HTTP/1.1" 404 14164
+2024-02-21 07:23:03,296 ERROR log Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 2161, in add_fields
+    join_info = self.setup_joins(
+                ^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 1823, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+                                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 1724, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'status' into field. Choices are: created_by, created_by_id, id, items, programme, quotation_required_by, reference, submission_date, supplier, supplier_id, terms
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\finance\views.py", line 561, in dashboard_data
+    .values('status')\
+     ^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\query.py", line 1313, in values
+    clone = self._values(*fields, **expressions)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\query.py", line 1308, in _values
+    clone.query.set_values(fields)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 2460, in set_values
+    self.add_fields(field_names, True)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 2194, in add_fields
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'status' into field. Choices are: created_by, created_by_id, id, items, programme, quotation_required_by, reference, submission_date, supplier, supplier_id, terms
+2024-02-21 07:23:03,332 ERROR basehttp "GET /dashboard/ HTTP/1.1" 500 138199
+2024-02-21 07:23:03,393 ERROR log Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 2161, in add_fields
+    join_info = self.setup_joins(
+                ^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 1823, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+                                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 1724, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'status' into field. Choices are: created_by, created_by_id, id, items, programme, quotation_required_by, reference, submission_date, supplier, supplier_id, terms
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\finance\views.py", line 561, in dashboard_data
+    .values('status')\
+     ^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\query.py", line 1313, in values
+    clone = self._values(*fields, **expressions)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\query.py", line 1308, in _values
+    clone.query.set_values(fields)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 2460, in set_values
+    self.add_fields(field_names, True)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 2194, in add_fields
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'status' into field. Choices are: created_by, created_by_id, id, items, programme, quotation_required_by, reference, submission_date, supplier, supplier_id, terms
+2024-02-21 07:23:03,407 ERROR basehttp "GET /dashboard/ HTTP/1.1" 500 138199
+2024-02-21 07:23:05,689 ERROR log Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 2161, in add_fields
+    join_info = self.setup_joins(
+                ^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 1823, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+                                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 1724, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'status' into field. Choices are: created_by, created_by_id, id, items, programme, quotation_required_by, reference, submission_date, supplier, supplier_id, terms
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\finance\views.py", line 561, in dashboard_data
+    .values('status')\
+     ^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\query.py", line 1313, in values
+    clone = self._values(*fields, **expressions)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\query.py", line 1308, in _values
+    clone.query.set_values(fields)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 2460, in set_values
+    self.add_fields(field_names, True)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 2194, in add_fields
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'status' into field. Choices are: created_by, created_by_id, id, items, programme, quotation_required_by, reference, submission_date, supplier, supplier_id, terms
+2024-02-21 07:23:05,702 ERROR basehttp "GET /dashboard/ HTTP/1.1" 500 138199
+2024-02-21 07:23:05,810 ERROR log Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 2161, in add_fields
+    join_info = self.setup_joins(
+                ^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 1823, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+                                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 1724, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'status' into field. Choices are: created_by, created_by_id, id, items, programme, quotation_required_by, reference, submission_date, supplier, supplier_id, terms
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\finance\views.py", line 561, in dashboard_data
+    .values('status')\
+     ^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\query.py", line 1313, in values
+    clone = self._values(*fields, **expressions)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\query.py", line 1308, in _values
+    clone.query.set_values(fields)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 2460, in set_values
+    self.add_fields(field_names, True)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\db\models\sql\query.py", line 2194, in add_fields
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'status' into field. Choices are: created_by, created_by_id, id, items, programme, quotation_required_by, reference, submission_date, supplier, supplier_id, terms
+2024-02-21 07:23:05,825 ERROR basehttp "GET /dashboard/ HTTP/1.1" 500 138199
+2024-02-21 07:24:23,801 ERROR log Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\finance\views.py", line 568, in dashboard_data
+    'rfqSummary': {item['status']: item['total'] for item in rfq_summary},
+                   ~~~~^^^^^^^^^^
+KeyError: 'status'
+2024-02-21 07:24:23,819 ERROR basehttp "GET /dashboard/ HTTP/1.1" 500 100927
+2024-02-21 07:24:23,904 ERROR log Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\finance\views.py", line 568, in dashboard_data
+    'rfqSummary': {item['status']: item['total'] for item in rfq_summary},
+                   ~~~~^^^^^^^^^^
+KeyError: 'status'
+2024-02-21 07:24:23,917 ERROR basehttp "GET /dashboard/ HTTP/1.1" 500 100927
+2024-02-21 07:25:05,495 ERROR log Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\finance\views.py", line 567, in dashboard_data
+    'prSummary': {item['name']: item['total'] for item in pr_summary},
+                  ~~~~^^^^^^^^
+KeyError: 'name'
+2024-02-21 07:25:05,512 ERROR basehttp "GET /dashboard/ HTTP/1.1" 500 101103
+2024-02-21 07:25:05,597 ERROR log Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\finance\views.py", line 567, in dashboard_data
+    'prSummary': {item['name']: item['total'] for item in pr_summary},
+                  ~~~~^^^^^^^^
+KeyError: 'name'
+2024-02-21 07:25:05,607 ERROR basehttp "GET /dashboard/ HTTP/1.1" 500 101103
+2024-02-21 07:25:58,820 ERROR log Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\finance\views.py", line 567, in dashboard_data
+    'prSummary': {item['unit']: item['total'] for item in pr_summary},
+                  ~~~~^^^^^^^^
+KeyError: 'unit'
+2024-02-21 07:25:58,836 ERROR basehttp "GET /dashboard/ HTTP/1.1" 500 101103
+2024-02-21 07:25:58,901 ERROR log Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jad.ibrahim\Desktop\HRsystem\Back-end\finance\views.py", line 567, in dashboard_data
+    'prSummary': {item['unit']: item['total'] for item in pr_summary},
+                  ~~~~^^^^^^^^
+KeyError: 'unit'
+2024-02-21 07:25:58,910 ERROR basehttp "GET /dashboard/ HTTP/1.1" 500 101103
+2024-02-21 07:39:39,062 WARNING log Not Found: /favicon.ico
+2024-02-21 07:39:39,064 WARNING basehttp "GET /favicon.ico HTTP/1.1" 404 14164
+2024-02-21 07:43:22,492 WARNING log Not Found: /api/dashboard-data/
+2024-02-21 07:43:22,494 WARNING basehttp "GET /api/dashboard-data/ HTTP/1.1" 404 14188
+2024-02-21 07:43:56,597 WARNING log Not Found: /api/dashboard-data/
+2024-02-21 07:43:56,598 WARNING basehttp "GET /api/dashboard-data/ HTTP/1.1" 404 14188
+2024-02-21 07:43:56,607 WARNING log Not Found: /api/dashboard-data/
+2024-02-21 07:43:56,607 WARNING basehttp "GET /api/dashboard-data/ HTTP/1.1" 404 14188
+2024-02-21 07:50:59,009 WARNING log Not Found: /dashboard/
+2024-02-21 07:50:59,010 WARNING basehttp "GET /dashboard/ HTTP/1.1" 404 14165
+2024-02-21 07:52:52,505 WARNING log Not Found: /dashboard/
+2024-02-21 07:52:52,506 WARNING basehttp "GET /dashboard/ HTTP/1.1" 404 14165
+2024-02-21 07:52:52,516 WARNING log Not Found: /dashboard/
+2024-02-21 07:52:52,517 WARNING basehttp "GET /dashboard/ HTTP/1.1" 404 14165
+2024-02-21 11:07:28,971 WARNING log Unauthorized: /purchase-requests/
+2024-02-21 11:07:28,979 WARNING basehttp "GET /purchase-requests/ HTTP/1.1" 401 27
+2024-02-21 11:07:28,998 WARNING log Unauthorized: /purchase-requests/
+2024-02-21 11:07:28,999 WARNING basehttp "GET /purchase-requests/ HTTP/1.1" 401 27
+2024-02-21 11:18:37,335 WARNING log Unauthorized: /purchase-requests/
+2024-02-21 11:18:37,336 WARNING basehttp "GET /purchase-requests/ HTTP/1.1" 401 27
+2024-02-21 11:18:37,343 WARNING log Unauthorized: /purchase-requests/
+2024-02-21 11:18:37,344 WARNING basehttp "GET /purchase-requests/ HTTP/1.1" 401 27
+2024-02-28 07:54:57,303 WARNING log Not Found: /media/employee_images/per_1Wxkkl9.jfif
+2024-02-28 07:54:57,305 WARNING basehttp "GET /media/employee_images/per_1Wxkkl9.jfif HTTP/1.1" 404 6485
+2024-02-28 16:21:11,060 WARNING log Not Found: /favicon.ico
+2024-02-28 16:21:11,065 WARNING basehttp "GET /favicon.ico HTTP/1.1" 404 14168
+2024-02-28 16:23:17,692 WARNING log Not Found: /media/employee_images/per_1Wxkkl9.jfif
+2024-02-28 16:23:17,696 WARNING basehttp "GET /media/employee_images/per_1Wxkkl9.jfif HTTP/1.1" 404 6485
+2024-02-28 16:29:46,843 INFO views Purchase request 25 approved by halo
+2024-03-18 09:04:07,910 WARNING log Not Found: /
+2024-03-18 09:04:07,912 WARNING basehttp "GET / HTTP/1.1" 404 14117
+2024-03-18 09:04:07,981 WARNING log Not Found: /favicon.ico
+2024-03-18 09:04:07,982 WARNING basehttp "GET /favicon.ico HTTP/1.1" 404 14168
